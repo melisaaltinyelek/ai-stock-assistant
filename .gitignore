@@ -1,0 +1,14 @@
+# Byte-compiled Python files
+__pycache__/
+
+# Environment and dependency files
+.env
+.venv/
+env/
+venv/
+
+# Local IDE Files
+ai-stock-assistant.code-workspace
+
+# Local IDE Settings
+.vscode/settings.json
