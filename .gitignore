@@ -7,8 +7,16 @@ __pycache__/
 env/
 venv/
 
-# Local IDE Files
+# Local IDE files
 ai-stock-assistant.code-workspace
 
-# Local IDE Settings
+# Local IDE settings
 .vscode/settings.json
+
+# uv files
+.python-version
+pyproject.toml
+uv.lock
+
+# Local source files
+src
