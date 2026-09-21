@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import json
 import pandas as pd
+from IPython.display import display
 
 load_dotenv()
 
@@ -28,3 +29,8 @@ for stock in stock_list:
 
     else:
         print(json.dumps(data, indent=4))
+
+print(df_values)
+
+df = pd.DataFrame.from_dict(df_values)
+display(df)
