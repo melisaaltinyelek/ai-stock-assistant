@@ -15,7 +15,7 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 # Stock symnbols to search for in XETRA
-stock_list = ["AMD.DEX", "AIR.DEX", "SIE.DEX"]
+stock_list = ["AMD.DEX", "AIR.DEX", "SIE.DEX", "ADS.DEX", "VOW.DEX", "RHM.DEX"]
 
 
 def get_stock_data(stock_list):
@@ -46,7 +46,7 @@ def get_stock_data(stock_list):
 
 
 df = get_stock_data(stock_list)
-# ndisplay(df)
+# display(df)
 
 # %%
 
@@ -112,3 +112,5 @@ def display_stocks(budget):
 
 
 display_stocks(budget=user_budget)
+
+# %%
