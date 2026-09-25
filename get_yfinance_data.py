@@ -1,4 +1,5 @@
 # %%
+
 import yfinance as yf
 from yfinance import EquityQuery
 import json
@@ -22,12 +23,12 @@ def get_user_budget():
         return get_user_budget()
 
 
-user_budget = get_user_budget()
+# user_budget = get_user_budget()
 
 # %%
 
 
-def get_stock_data(user_budger):
+def get_stock_data(user_budget):
 
     df_values = []
 
@@ -39,7 +40,7 @@ def get_stock_data(user_budger):
         ],
     )
 
-    response = yf.screen(q, sortField="ticker", sortAsc=True)
+    response = yf.screen(q, size=250, sortField="ticker", sortAsc=True)
 
     print(json.dumps(response, indent=4))
 
@@ -48,38 +49,25 @@ def get_stock_data(user_budger):
 
         print(quote)
 
-        for val in quote:
-            # print(val)
-            # for key, value in val.items():
-            #     print(f"Key: {key}, Value: {value}")
+        # for val in quote:
+        #     # print(val)
+        #     # for key, value in val.items():
+        #     #     print(f"Key: {key}, Value: {value}")
 
-            df_values.extend(quote)
+        df_values.extend(quote)
     else:
         print(json.dumps(response, indent=4))
 
-    print(df_values)
+    # print(df_values)
+
     df = pd.DataFrame.from_dict(df_values)
+
     return df
 
 
-df = get_stock_data(user_budger=user_budget)
+# df = get_stock_data(user_budger=user_budget)
 # display(df)
 # %%
-
-df = df[
-    [
-        "symbol",
-        "longName",
-        "regularMarketPrice",
-        "currency",
-        "fullExchangeName",
-        "regularMarketTime",
-    ]
-]
-
-display(df)
-
-# &&
 
 
 def clean_df_cols(df):
@@ -102,9 +90,40 @@ def clean_df_cols(df):
     return df
 
 
-df = clean_df_cols(df)
-display(df)
 # %%
 
-df.to_csv("data/yfinance_stock_data.csv")
+
+def display_stocks(budget):
+
+    filtered_df = stock_df[stock_df["Regular Market Price"] <= budget]
+    if not filtered_df.empty:
+        return filtered_df
+    else:
+        print(f"No stock has been found in the budget of {budget}€.")
+
+
+# %%
+
+user_budget = get_user_budget()
+df = get_stock_data(user_budget=user_budget)
+
+df = df[
+    [
+        "symbol",
+        "longName",
+        "regularMarketPrice",
+        "currency",
+        "fullExchangeName",
+        "regularMarketTime",
+    ]
+]
+
+df = clean_df_cols(df)
+
+df.to_csv("data/yfinance_stock_data.csv", index=False)
+
+stock_df = pd.read_csv("data/yfinance_stock_data.csv")
+
+display_stocks(user_budget)
+
 # %%
