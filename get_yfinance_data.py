@@ -119,6 +119,7 @@ df = df[
 ]
 
 df = clean_df_cols(df)
+df = df.dropna()
 
 df.to_csv("data/yfinance_stock_data.csv", index=False)
 
