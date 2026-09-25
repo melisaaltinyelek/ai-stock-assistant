@@ -4,6 +4,7 @@ from yfinance import EquityQuery
 import json
 import pandas as pd
 from IPython.display import display
+import re
 
 # %%
 
@@ -86,7 +87,9 @@ def clean_df_cols(df):
     new_df_cols = []
 
     for col in df.columns:
-        print(col)
+        # print(col)
+        col = re.sub(r"([a-z])([A-Z])", r"\1 \2", col)
+        # print(col)
         new_col = col.title()
         new_df_cols.append(new_col)
 
