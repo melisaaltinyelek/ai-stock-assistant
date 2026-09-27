@@ -28,11 +28,6 @@ def get_user_budget():
 
 # %%
 
-request_id = str(uuid.uuid4())
-print(request_id)
-
-# %%
-
 
 def get_stock_data(user_budget):
 
@@ -110,6 +105,12 @@ def display_stocks(budget):
 
 # %%
 
+request_id = str(uuid.uuid4())
+# print(request_id)
+
+file_name = request_id[0:8]
+# print(file_name)
+
 user_budget = get_user_budget()
 df = get_stock_data(user_budget=user_budget)
 
@@ -148,11 +149,11 @@ display(df)
 
 # %%
 
-df.to_csv("data/yfinance_stock_data.csv", index=False)
+df.to_csv(f"data/yfinance_stock_data_{file_name}.csv", index=False)
 
 # %%
 
-stock_df = pd.read_csv("data/yfinance_stock_data.csv")
+stock_df = pd.read_csv(f"data/yfinance_stock_data_{file_name}.csv")
 
 display_stocks(user_budget)
 
