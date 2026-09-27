@@ -6,6 +6,7 @@ import json
 import pandas as pd
 from IPython.display import display
 import re
+import uuid
 
 # %%
 
@@ -24,6 +25,11 @@ def get_user_budget():
 
 
 # user_budget = get_user_budget()
+
+# %%
+
+request_id = str(uuid.uuid4())
+print(request_id)
 
 # %%
 
@@ -119,9 +125,32 @@ df = df[
 ]
 
 df = clean_df_cols(df)
+
+df = df.assign(Request_ID=request_id)
+
+df.rename(
+    columns={
+        "Symbol": "Symbol",
+        "Long Name": "Company Name",
+        "Regular Market Price": "Regular Market Price",
+        "Currency": "Currency",
+        "Full Exchange Name": "Exchange",
+        "Regular Market Time": "Quote Time",
+        "Request_ID": "Request ID",
+    },
+    inplace=True,
+)
+
+df.duplicated(subset="Symbol", keep=False).any()
 df = df.dropna()
 
+display(df)
+
+# %%
+
 df.to_csv("data/yfinance_stock_data.csv", index=False)
+
+# %%
 
 stock_df = pd.read_csv("data/yfinance_stock_data.csv")
 
