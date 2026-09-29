@@ -144,6 +144,7 @@ df.rename(
 
 df.duplicated(subset="Symbol", keep=False).any()
 df = df.dropna()
+df["Quote Time"] = pd.to_datetime(df["Quote Time"], unit="s", utc=True)
 
 display(df)
 
