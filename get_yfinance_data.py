@@ -7,6 +7,7 @@ import pandas as pd
 from IPython.display import display
 import re
 import uuid
+from database import save_search_request, engine
 
 # %%
 
@@ -96,7 +97,7 @@ def clean_df_cols(df):
 
 def display_stocks(budget):
 
-    filtered_df = stock_df[stock_df["Regular Market Price"] <= budget]
+    filtered_df = stock_df[stock_df["price"] <= budget]
     if not filtered_df.empty:
         return filtered_df
     else:
@@ -131,20 +132,20 @@ df = df.assign(Request_ID=request_id)
 
 df.rename(
     columns={
-        "Symbol": "Symbol",
-        "Long Name": "Company Name",
-        "Regular Market Price": "Regular Market Price",
-        "Currency": "Currency",
-        "Full Exchange Name": "Exchange",
-        "Regular Market Time": "Quote Time",
-        "Request_ID": "Request ID",
+        "Symbol": "symbol",
+        "Long Name": "company_name",
+        "Regular Market Price": "price",
+        "Currency": "currency",
+        "Full Exchange Name": "exchange",
+        "Regular Market Time": "quote_time",
+        "Request_ID": "request_id",
     },
     inplace=True,
 )
 
-df.duplicated(subset="Symbol", keep=False).any()
+df.duplicated(subset="symbol", keep=False).any()
 df = df.dropna()
-df["Quote Time"] = pd.to_datetime(df["Quote Time"], unit="s", utc=True)
+df["quote_time"] = pd.to_datetime(df["quote_time"], unit="s", utc=True)
 
 display(df)
 
@@ -157,5 +158,9 @@ df.to_csv(f"data/yfinance_stock_data_{file_name}.csv", index=False)
 stock_df = pd.read_csv(f"data/yfinance_stock_data_{file_name}.csv")
 
 display_stocks(user_budget)
+
+# %%
+
+save_search_request(request_id=request_id, budget=user_budget, df=df)
 
 # %%
