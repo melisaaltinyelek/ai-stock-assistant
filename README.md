@@ -187,4 +187,34 @@ The project does not yet provide a fully tested, automated setup process. Config
 - [ ] Add an LLM for stock-related information analysis and summarization.
 - [ ] Implement structured AI-generated responses.
 
-### Phase 4 — Application
+### Phase 4 — Application and Deployment
+
+- [ ] Build a simple user interface.
+- [ ] Add automated data-refresh workflows.
+- [ ] Containerize the application with Docker.
+- [ ] Deploy the application.
+- [ ] Introduce logging, monitoring, and evaluation.
+
+## Learning Objectives
+
+This project is part of my ongoing transition toward AI and backend engineering.
+
+It provides a practical environment for developing skills in:
+
+- Integrating external APIs.
+- Working with JSON and structured data.
+- Building Python data-processing pipelines.
+- Querying and storing data in relational databases.
+- Designing backend application components.
+- Integrating LLMs into data-driven applications.
+- Developing an application incrementally from prototype to deployment.
+
+## Disclaimer
+
+This is an educational and experimental project.
+
+The application is not intended to provide professional financial advice, and its current implementation does not generate AI-powered investment recommendations or execute trades.
+
+## Author
+
+**Melisa Altinyelek** — [GitHub Profile](https://github.com/melisaaltinyelek)
