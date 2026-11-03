@@ -195,20 +195,6 @@ The project does not yet provide a fully tested, automated setup process. Config
 - [ ] Deploy the application.
 - [ ] Introduce logging, monitoring, and evaluation.
 
-## Learning Objectives
-
-This project is part of my ongoing transition toward AI and backend engineering.
-
-It provides a practical environment for developing skills in:
-
-- Integrating external APIs.
-- Working with JSON and structured data.
-- Building Python data-processing pipelines.
-- Querying and storing data in relational databases.
-- Designing backend application components.
-- Integrating LLMs into data-driven applications.
-- Developing an application incrementally from prototype to deployment.
-
 ## Disclaimer
 
 This is an educational and experimental project.
