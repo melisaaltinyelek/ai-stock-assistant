@@ -12,8 +12,6 @@ The project currently focuses on **retrieving stock market data, filtering equit
 
 My long-term goal is to develop an AI-powered assistant capable of combining stock market information, financial news, and LLM-based analysis to help users explore potential investment opportunities.
 
-The project is being developed incrementally as I expand my practical experience with **Python, API integrations, databases, backend engineering, and LLM applications**.
-
 > **Project Status:** Early development. Market data retrieval, initial stock screening, data processing, and database integration have been implemented. AI-based analysis and the user-facing application are planned.
 
 ## Project Objectives
@@ -106,8 +104,6 @@ The application follows a simple data-processing pipeline:
 4. **Data Transformation:** The response is converted into a structured Pandas DataFrame.
 5. **Data Export:** The processed stock data is saved to a CSV file.
 6. **Database Persistence:** Search information and the associated results are passed to the PostgreSQL persistence layer.
-
-This workflow provides the foundation for future AI-powered analysis.
 
 ## Repository Structure
 
